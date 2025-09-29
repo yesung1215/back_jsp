@@ -1,7 +1,0 @@
-package com.app.exception;
-
-import javax.management.RuntimeErrorException;
-
-public class ProductNotFoundException extends RuntimeErrorException {
-
-}
