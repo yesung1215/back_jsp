@@ -1,0 +1,47 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>상품 수정</title>
+</head>
+<body>
+	<form action="/myBatis/update">
+		<div>
+			<span>상품명</span><input name='productName' />
+		</div>
+		<div>
+			<span>가격</span><input name='productPrice' />
+		</div>
+		<div>
+			<span>재고</span><input name='productStock' />
+		</div>
+		<button>상품 수정</button>
+	</form>
+</body>
+<script type="text/javascript">
+	const inputs = document.querySelectorAll('input');
+	const button = document.querySelector('button')
+	const form = document.querySelector('form')
+	
+	console.log(inputs)
+	button.addEventListener("click", (e) => {
+		for(let input of inputs){
+			if(input.name === "productName"){
+				if(!input.value){
+					alert(input.name + "값이 없습니다.")
+					return;
+				}
+			}
+		}	
+		form.submit()
+	})
+</script>
+</html>
+
+
+
+
+
+

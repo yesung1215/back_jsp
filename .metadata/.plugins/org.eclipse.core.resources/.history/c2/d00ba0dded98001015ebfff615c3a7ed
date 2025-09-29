@@ -1,0 +1,5 @@
+package com.app.myBatis.config;
+
+public class MyBatisConfig {
+
+}

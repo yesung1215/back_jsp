@@ -1,0 +1,10 @@
+1758867012861	Rename type 'ProductDAO'
+1758867100556	Delete element
+1758867318039	Rename resource 'productMapper.xml'
+1758867324903	Rename resource 'pOSTMapper.xml'
+1758869346345	Delete element
+1758869353920	Delete element
+1758870305785	Move 'write.jsp' to 'webapp'
+1758876054851	Delete element
+1758876114305	Rename type 'n'
+1758991842570	Rename package 'com.app.post.cotroller'

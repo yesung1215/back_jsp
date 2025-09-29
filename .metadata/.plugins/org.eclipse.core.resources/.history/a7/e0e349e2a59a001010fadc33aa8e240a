@@ -1,0 +1,57 @@
+package com.app.post;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.app.Result;
+
+public class PostFrontController extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Result result = null;
+		String target = req.getRequestURI().replace(req.getContextPath() + "/", "").split("\\.")[0];
+//		System.out.println(target); QA 완료 이상 무
+		
+		// 1. 게시글 작성 write, write-ok
+		// 2. 게시글 목록 list
+		// 3. 게시글 상세보기 read
+		// 4. 게시글 수정 update, update-ok
+		// 5. 게시글 삭제 delete-ok
+		
+		if(target.equals("write")) {
+			
+		}else if(target.equals("write-ok")) {
+			
+		}else if(target.equals("list")) {
+			
+		}else if(target.equals("read")) {
+			
+		}else if(target.equals("update")) {
+			
+		}else if(target.equals("update-ok")) {
+			
+		}else if(target.equals("delete-ok")) {
+			
+		}else {
+//			404 error
+		}
+	
+		if(result != null) {
+			if(result.isRedirect()) {
+				resp.sendRedirect(result.getPath());
+			}else {
+				req.getRequestDispatcher(result.getPath()).forward(req, resp);
+			}
+		}
+		
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
+}

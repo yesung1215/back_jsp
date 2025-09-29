@@ -1,0 +1,49 @@
+package com.app.vo;
+
+import java.util.Objects;
+
+public class ProductVo {
+	private long id;
+	private String productName;
+	private int productPrice;
+	private int productStock;
+	
+	public ProductVo() {;}
+	public ProductVo(long id, String productName, int productPrice, int productStock) {
+		this.id = id;
+		this.productName = productName;
+		this.productPrice = productPrice;
+		this.productStock = productStock;
+	}
+	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	@Override
+	public String toString() {
+		return "ProductVo [id=" + id + ", productName=" + productName + ", productPrice=" + productPrice
+				+ ", productStock=" + productStock + "]";
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ProductVo other = (ProductVo) obj;
+		return id == other.id;
+	}
+	
+	
+
+}

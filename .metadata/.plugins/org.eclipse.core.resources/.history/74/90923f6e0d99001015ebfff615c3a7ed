@@ -1,0 +1,27 @@
+package com.app.dao;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.app.myBatis.config.MyBatisConfig;
+import com.app.vo.ProductVO;
+
+public class ProductDAO {
+	
+	public SqlSession sqlSession;
+	
+	public ProductDAO() {
+		sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
+	}
+	
+	
+//	상품 추가
+	public void insert(ProductVO productVO) {
+		sqlSession.insert("product.insert", productVO);
+	}
+	
+//	상품 조회
+	
+	
+	
+	
+}

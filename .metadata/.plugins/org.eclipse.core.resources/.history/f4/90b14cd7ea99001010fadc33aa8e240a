@@ -1,0 +1,7 @@
+package com.app.product.controller;
+
+import com.app.Action;
+
+public class WriteOkController implements Action {
+
+}

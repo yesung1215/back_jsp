@@ -1,0 +1,10 @@
+package com.app.vo;
+
+public class PostVO {
+	private Long id;
+	private String postTitle;
+	private String postContent;
+	
+	
+
+}

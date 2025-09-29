@@ -1,0 +1,11 @@
+package com.app.dao;
+
+import com.app.myBatis.config.MyBatisConfig;
+import com.app.vo.ProductVO;
+
+public class ProductDAO {
+//	상품 추가
+	public void insert(ProductVO productVO) {
+		MyBatisConfig.getSqlSessionFactory().openSession(true);
+	}
+}

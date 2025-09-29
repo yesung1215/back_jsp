@@ -1,0 +1,28 @@
+package com.app.controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.app.Action;
+import com.app.Result;
+
+public class TestController implements Action {
+
+	@Override
+	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		Result result = new Result();
+		String name = req.getParameter("name");
+		req.setAttribute("name", name);
+		
+//		int age = Integer.parseInt(req.getParameter("age")); 
+//		req.setAttribute("age", age);
+//		req.setAttribute("realAge", age - 1);
+		
+		result.setPath("/test.jsp");
+		return result;
+	}
+
+}

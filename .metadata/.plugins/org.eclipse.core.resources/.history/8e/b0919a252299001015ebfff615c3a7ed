@@ -1,0 +1,27 @@
+<%@page import="com.app.vo.ProductVO"%>
+<%@page import="java.util.Optional"%>
+<%@page import="com.app.dao.ProductDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>상세 정보</title>
+</head>
+<body>
+	<%
+		ProductDAO productDAO = new ProductDAO();
+		Long id = Long.parseLong(request.getParameter("id"));
+		Optional<ProductVO> product = productDAO.select(id);
+		if(product.isPresent()){
+			ProductVO foundProduct = product.get();
+		}
+	%>	
+		<h1><%=foundProduct.getProductName() %></h1>
+	<%
+		}
+	%>
+		
+</body>
+</html>

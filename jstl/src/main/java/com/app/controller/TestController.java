@@ -1,0 +1,47 @@
+package com.app.controller;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.app.Action;
+import com.app.Result;
+
+public class TestController implements Action {
+
+   @Override
+   public Result execute(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+      Result result = new Result();
+      String name = null; 
+      Integer age = null, realAge = null;
+      ArrayList<String> datas = new ArrayList<String>();
+      
+      if(req.getParameter("name") != null) {
+         name = req.getParameter("name");
+      }
+      
+      if(req.getParameter("age") != null) {
+         age = Integer.parseInt(req.getParameter("age"));
+         realAge = age - 1;
+      }
+      
+//      c:choose문
+//      req.setAttribute("name", name);
+//      req.setAttribute("age", age);
+//      req.setAttribute("realAge", age - 1);
+      
+//      c:forEach문
+      datas.add(name);
+      datas.add(age.toString());
+      datas.add(String.valueOf(realAge));
+      datas.add("<script>alert('이힛! 해킹 성공^_^'); window.location.href='https://www.naver.com'; </script>");
+      req.setAttribute("datas", datas);
+      
+      result.setPath("/test.jsp");
+      return result;
+   }
+
+}

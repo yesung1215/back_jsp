@@ -1,0 +1,7 @@
+package com.app.post;
+
+import javax.servlet.http.HttpServlet;
+
+public class PostFrontController extends HttpServlet {
+
+}

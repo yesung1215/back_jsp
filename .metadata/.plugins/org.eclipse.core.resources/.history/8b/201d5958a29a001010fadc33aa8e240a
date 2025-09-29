@@ -1,0 +1,5 @@
+package com.app.post;
+
+public class PostFrontController {
+
+}

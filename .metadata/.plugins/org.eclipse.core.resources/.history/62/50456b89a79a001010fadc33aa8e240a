@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시글 작성</title>
+</head>
+<body>
+	<form action="/mvc_task/write-ok.post" method="get">
+		<div>
+			<span>상품명</span><input name="productName" />	
+		</div>
+		<div>
+			<span>상품재고</span><input name="productStock" />	
+		</div>
+		<button>게시글 등록</button>
+	</form>
+</body>
+</html>

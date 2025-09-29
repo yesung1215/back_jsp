@@ -1,0 +1,14 @@
+package com.app.dao;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.app.myBatis.config.MyBatisConfig;
+
+public class ProductDAO {
+	
+	public SqlSession sqlSession;
+	
+	public ProductDAO() {
+		sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
+	}
+}
