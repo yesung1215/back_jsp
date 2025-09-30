@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
+
 import com.app.Action;
 import com.app.Result;
 import com.app.dao.ProductDAO;
@@ -19,10 +21,12 @@ public class ProductUpdateController implements Action {
 		Result result = new Result();
 		ProductDAO productDAO = new ProductDAO();
 		Long id = Long.parseLong(req.getParameter("id"));
+		ProductVO product = null;
 		
 		try {
-			ProductVO foundProduct = productDAO.select(id).orElseThrow(ProductNotFoundException::new);
-			req.setAttribute("product", foundProduct);
+			product = productDAO.select(id).orElseThrow(ProductNotFoundException::new);
+			req.setAttribute("product", product);
+			req.setAttribute("ProductJSON", new JSONObject(product));
 		} catch (ProductNotFoundException e) {
 			result.setPath("/erorr.jsp");
 			req.setAttribute("message", "상품을 찾을 수 없습니다.");

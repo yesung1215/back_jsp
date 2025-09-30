@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
-<%@page import="com.app.vo.ProductVO"%>
 <%@page import="java.util.List"%>
+<%@page import="com.app.vo.ProductVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,106 +10,99 @@
 <title>리스트</title>
 </head>
 <body>
-	
-<%-- 	
-	<%
-		List<ProductVO> products = (List<ProductVO>)request.getAttribute("products"); 
-	%>
-	<table>
-		<tr>
-			<th>상품 번호</th>			
-			<th>상품 이름</th>			
-			<th>상품 가격</th>			
-			<th>상품 재고</th>			
-		</tr>
-		<%
-			for(ProductVO product: products){
-		%>
-		<tr>
-			<td><%=product.getId() %></td>
-			<td>
-				<a href='/mvc/read.product?id=<%=product.getId() %>'><%=product.getProductName() %></a>
-			</td>
-			<td><%=product.getProductPrice() %></td>
-			<td><%=product.getProductStock() %></td>
-		</tr>
-		<%		
-			}
-		%> 
-	</table>
-		<div>
-			<a href="/mvc/write.product">등록 완료</a>
-		</div> 
-		--%>
-		
-<%-- 	<table>
-		<tr>
-			<th>상품 번호</th>			
-			<th>상품 이름</th>			
-			<th>상품 가격</th>			
-			<th>상품 재고</th>			
-		</tr>
-		<tr>
-			<c:forEach var="product" items="${products}">
-				<tr>
-					<td>
-						<c:out value="${product.id}"></c:out>
-					</td>
-					<td>
-						<a href="/mvc/read.product?id=${product.id}">
-							<c:out value="${product.productName}"></c:out>
-						</a>
-					</td>
-					<td>
-						<c:out value="${product.productPrice}"></c:out>
-					</td>
-					<td>
-						<c:out value="${product.productStock}"></c:out>
-					</td>
-				</tr>
-			</c:forEach>		
-		</tr>
-	</table>
-		<div>
-			<a href="/mvc/write.product">등록 완료</a>
-		</div> --%>
-		
-	<table>
-		<tr>
-			<th>상품 번호</th>			
-			<th>상품 이름</th>			
-			<th>상품 가격</th>			
-			<th>상품 재고</th>			
-		</tr>
-	</table>
-		<div>
-			<a href="/mvc/write.product">등록 완료</a>
-		</div>
-	
-	
+   <%-- 
+   <% 
+      List<ProductVO> products = (List<ProductVO>)request.getAttribute("products"); 
+   %>
+   <table>
+      <tr>
+         <th>상품 번호</th>
+         <th>상품 이름</th>
+         <th>상품 가격</th>
+         <th>상품 재고</th>
+      </tr>
+      <% 
+         for(ProductVO product: products){
+      %>
+      <tr>
+         <td><%=product.getId() %></td>
+         <td>
+            <a href="/mvc/read.product?id=<%=product.getId() %>"><%=product.getProductName() %></a>
+         </td>
+         <td><%=product.getProductPrice() %></td>
+         <td><%=product.getProductStock() %></td>
+      </tr>
+      <%
+         }
+      %>
+   </table>
+   <div>
+      <a href="/mvc/write.product">상품 등록</a>
+   </div> 
+   --%>
+   
+<%--    <table>
+      <tr>
+         <th>상품 번호</th>
+         <th>상품 이름</th>
+         <th>상품 가격</th>
+         <th>상품 재고</th>
+      </tr>
+      <c:forEach var="product" items="${products}">
+         <tr>
+            <td><c:out value="${product.id}"></c:out><td>
+            <td>
+               <a href="/mvc/read.product?id=${product.id}">
+                  <c:out value="${product.productName}"></c:out>
+               </a>
+            <td>
+            <td><c:out value="${product.productPrice}"></c:out><td>
+            <td><c:out value="${product.productStock}"></c:out><td>
+         </tr>
+      </c:forEach>
+   </table>
+   <div>
+      <a href="/mvc/write.product">상품 등록</a>
+   </div>  --%>
+   
+   <table>
+      <tr>
+         <th>상품 번호</th>
+         <th>상품 이름</th>
+         <th>상품 가격</th>
+         <th>상품 재고</th>
+      </tr>
+   </table>
+   <div>
+      <a href="/mvc/write.product">상품 등록</a>
+   </div> 
+   
 </body>
 <script type="text/javascript">
-	console.log("${products}")
-	/* console.log(${productsJSON}) */
-	const products = JSON.parse(`${productsJSON}`);
-	const table = document.querySelector("table");
-	
-	
-	products.forEach((product) => {
-		/* console.log(`상품명 ${product.productName}`): JSTL문법과 JS(ES6) 템플릿 리터널 문법과 충돌 */
-		console.log("상품명 " + product.productName)
-		table.innerHTML += (
-			"<tr>" +
-				"<td>" + product.id + "</td>" +
-				"<td>" + product.productName + "</td>" +
-				"<td>" + product.productPrice + "</td>" +
-				"<td>" + product.productStock + "</td>" +
-			"</tr>"	
-		)
-	})
+   /* console.log("${products}") */
+   /*
+      JSON.stringify(): 데이터 -> JSON
+      JSON.parse(): JSON -> 데이터
+   */
+   const products = JSON.parse(`${productsJSON}`);
+   const table = document.querySelector("table");
+   
+   products.forEach((product) => {
+      /* console.log(`상품명 ${product.productName}`): JSTL문법과 JS(ES6) 템플릿 리터럴 문법과 충돌 */
+      console.log("상품명" + product.productName)
+      table.innerHTML += (
+         "<tr>" +
+            "<td>" + product.id + "</td>" +
+            "<td>" + product.productName + "</td>" +
+            "<td>" + product.productPrice + "</td>" +
+            "<td>" + product.productStock + "</td>" +
+         "</tr>"
+      )   
+   })
 </script>
-
-
-
-
 </html>
+
+
+
+
+
