@@ -37,7 +37,7 @@ public class MemberLoginOkController implements Action {
 		} 
 		
 //		정상 로그인
-		session.setAttribute("memberEmail", session); 
+		session.setAttribute("memberEmail", memberEmail); 
 		result.setPath("/flow/");
 		return result;
 		

@@ -23,6 +23,11 @@ public class MemberDAO {
 		return sqlSession.selectOne("member.select", memberVO);
 	}
 	
+//	이메일로 ID 조회 
+	public Long selectIdByMemberEmail(String memberEmail) {
+		return sqlSession.selectOne("member.selectIdByMemberEmail", memberEmail);
+	}
+	
 }
 
 

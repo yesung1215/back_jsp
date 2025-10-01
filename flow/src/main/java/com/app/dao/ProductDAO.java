@@ -1,6 +1,7 @@
 package com.app.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -19,9 +20,17 @@ public class ProductDAO {
 		sqlSession.insert("product.insert", productVO);
 	}
 	
+	public Optional<ProductVO> select(Long id) {
+		return Optional.ofNullable(sqlSession.selectOne("product.select", id)); 
+	}
+	
 	public List<ProductVO> selectAll() {
 		List<ProductVO> products = sqlSession.selectList("product.selectAll");
 		return products;
+	}
+	
+	public void update(ProductVO productVO) {
+		sqlSession.update("product.update", productVO);
 	}
 	
 }

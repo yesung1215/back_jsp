@@ -6,6 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import com.app.Action;
 import com.app.Result;
 import com.app.dao.ProductDAO;
@@ -16,9 +19,14 @@ public class ProductListController implements Action {
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		Result result = new Result();
 		ProductDAO productDAO = new ProductDAO();
-		req.setAttribute("products", productDAO);
+		JSONArray productsJSON = new JSONArray();
 		
-		result.setPath("/list.jsp"); // 어디로?
+		req.setAttribute("products", productDAO.selectAll());
+		
+		productDAO.selectAll().stream().map((JSONObject::new)).forEach(productsJSON::put);
+		req.setAttribute("productsJSON", productsJSON);
+		
+		result.setPath("/list.jsp");
 		return result;
 	}
 
