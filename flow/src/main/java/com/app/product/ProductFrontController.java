@@ -14,7 +14,11 @@ import com.app.member.controller.MemberLoginController;
 import com.app.member.controller.MemberLoginOkController;
 import com.app.product.controller.ProductAddController;
 import com.app.product.controller.ProductAddOkController;
+import com.app.product.controller.ProductDeleteOkController;
+import com.app.product.controller.ProductEditController;
+import com.app.product.controller.ProductEditOkController;
 import com.app.product.controller.ProductListController;
+import com.app.product.controller.ProductReadController;
 
 public class ProductFrontController extends HttpServlet{
 	@Override
@@ -35,9 +39,13 @@ public class ProductFrontController extends HttpServlet{
 		}else if(target.equals("list")) {
 			result = new ProductListController().execute(req, resp);
 		}else if(target.equals("edit")) {
+			result = new ProductEditController().execute(req, resp);
 		}else if(target.equals("edit-ok")) {
+			result = new ProductEditOkController().execute(req, resp);
 		}else if(target.equals("read")) { 
-		}else if(target.equals("remove-ok")) {
+			result = new ProductReadController().execute(req, resp);
+		}else if(target.equals("delete-ok")) {
+			result = new ProductDeleteOkController().execute(req, resp);
 		}else {
 		}
 		

@@ -20,13 +20,13 @@ public class ProductDAO {
 		sqlSession.insert("product.insert", productVO);
 	}
 	
-	public Optional<ProductVO> select(Long id) {
-		return Optional.ofNullable(sqlSession.selectOne("product.select", id)); 
-	}
-	
 	public List<ProductVO> selectAll() {
 		List<ProductVO> products = sqlSession.selectList("product.selectAll");
 		return products;
+	}
+	
+	public Optional<ProductVO> select(Long id) {
+		return Optional.ofNullable(sqlSession.selectOne("product.select", id));
 	}
 	
 	public void update(ProductVO productVO) {

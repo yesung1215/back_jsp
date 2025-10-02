@@ -26,5 +26,10 @@
 			PRODUCT_STOCK = #{productStock}
 		WHERE ID = #{id}
 	</update>
+	
+	<delete id="delete" parameterType="Long">
+		DELETE FROM TBL_PRODUCT
+		WHERE ID = #{id}
+	</delete>
 
 </mapper>

@@ -26,9 +26,8 @@ public class OrderDAO {
 	}
 	
 	public Optional<OrderDTO> select(OrderDTO orderDTO) {
-		return  Optional.ofNullable(sqlSession.selectOne("order.selectAll", orderDTO));
+		return Optional.ofNullable(sqlSession.selectOne("order.select", orderDTO));
 	}
-	
 	
 	
 }

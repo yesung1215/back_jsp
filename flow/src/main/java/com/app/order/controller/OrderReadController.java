@@ -14,27 +14,29 @@ import com.app.Result;
 import com.app.dao.MemberDAO;
 import com.app.dao.OrderDAO;
 import com.app.dto.OrderDTO;
-import com.app.exception.OrderNotFoundException;
 
 public class OrderReadController implements Action {
 
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		Result result = new Result();
-		Long orderId, memberId = null;
-		MemberDAO memberDAO = new MemberDAO();
 		OrderDAO orderDAO = new OrderDAO();
 		OrderDTO orderDTO = new OrderDTO();
+		MemberDAO memberDAO = new MemberDAO();
 		HttpSession session = req.getSession();
-		String memberEmail = null;
-		
+		String memberEmail = null ;
+		Long orderId, memberId = null;
+
 		memberEmail = (String)session.getAttribute("memberEmail");
+		
 		orderId = Long.parseLong(req.getParameter("id"));
 		memberId = memberDAO.selectIdByMemberEmail(memberEmail);
 		
-			order = orderDAO.select(id).orElseThrow(OrderNotFoundException::new);
-			req.setAttribute("orderJSON", new JSONObject(order));
-		
+		orderDTO.setId(orderId);
+		orderDTO.setMemberId(memberId);
+		orderDAO.select(orderDTO).ifPresent((order) -> {
+			req.setAttribute("order", new JSONObject(order));
+		});
 		
 		result.setPath("/order/read.jsp");
 		return result;

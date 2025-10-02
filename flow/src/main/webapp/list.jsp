@@ -8,7 +8,7 @@
 <title>상품 리스트</title>
 </head>
 <body>
-   <table id="product-table">
+    <table id="product-table">
       <tr>
          <th>선택</th>
          <th>상품번호</th>
@@ -16,7 +16,7 @@
          <th>상품가격</th>
          <th>상품재고</th>
       </tr>
-   </table>
+   </table> 
    
    <hr />
    
@@ -33,15 +33,15 @@
    </form>
 </body>
 <script type="text/javascript">
-   const orderForm = document.querySelector("#order-form");
    const products = JSON.parse(`${productsJSON}`);
+   const inputs = document.querySelectorAll("#product-table input");
    const productTable = document.querySelector("#product-table");
    
    products.forEach(({id, productName, productPrice, productStock}) => {
       productTable.innerHTML += (
          "<tr>" +
             "<td>" + "<input name='productId' type='checkbox' value='"+ id + "' />" + "</td>" +
-            "<td>" + id + "</td>" +
+            "<td><a href='/flow/read.product?id=" + id + "'>" + id + "</a></td>" +
             "<td>" + productName + "</td>" +
             "<td>" + productPrice + "</td>" +
             "<td>" + productStock + "</td>" +
@@ -49,8 +49,8 @@
       )
    })
    
+   const orderForm = document.querySelector("#order-form");
    const orderTable = document.querySelector("#order-table") 
-   const inputs = document.querySelectorAll("#product-table input");
    const orderButton = document.querySelector("#order-button");
    
    NodeList.prototype.find = Array.prototype.find;
